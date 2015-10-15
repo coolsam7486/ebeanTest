@@ -43,19 +43,6 @@ public class BiUsers extends Model {
 	public static Finder<Long, BiUsers> find = new Finder<Long, BiUsers>(
 			Long.class, BiUsers.class);
 
-	/*
-	 * public static Promise<List<BiApp>> findKeynote(final long user) {
-	 * 
-	 * return Promise.promise(new Function0<List<BiApp>>() {
-	 * 
-	 * @Override public List<BiApp> apply() throws Throwable { BiUsers us =
-	 * find.where().eq("user_id", user).findUnique(); return us.getApps(); }
-	 * 
-	 * }, DBExecutionContext.ctx);
-	 * 
-	 * }
-	 */
-
 	public Long getUserId() {
 		return userId;
 	}

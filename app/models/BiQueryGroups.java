@@ -73,17 +73,4 @@ public class BiQueryGroups extends Model {
 	public static Finder<Long, BiQueryGroups> find = new Finder<Long, BiQueryGroups>(
 			Long.class, BiQueryGroups.class);
 
-	/*
-	 * public Promise<Void> asyncSave() { // TODO Auto-generated method stub
-	 * return Promise.promise(new Function0<Void>() {
-	 * 
-	 * @Override public Void apply() throws Throwable { try {
-	 * 
-	 * save(); } catch(Exception e) {
-	 * Logger.info("Unable to save for groups"+e.getMessage()); } return null; }
-	 * }, DBExecutionContext.ctx);
-	 * 
-	 * }
-	 */
-
 }

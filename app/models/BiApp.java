@@ -1,47 +1,48 @@
 package models;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import play.db.ebean.*;
-import play.data.validation.Constraints.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-import javax.persistence.*;
+import play.data.validation.Constraints.Required;
 
+import com.avaje.ebean.Model;
 
 @Entity
-
 public class BiApp extends Model {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private Long appId;
-	
+
 	@Required
 	private String appName;
-	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private BiCompany company;
-	
-	
-	 @ManyToMany(mappedBy="apps", cascade=CascadeType.PERSIST)
-	  private List<BiUsers> users = new ArrayList<>();
-	
-	  
-	
+
+	@ManyToMany(mappedBy = "apps", cascade = CascadeType.PERSIST)
+	private List<BiUsers> users = new ArrayList<>();
+
 	public BiApp() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	@OneToMany(mappedBy="app" ,cascade=CascadeType.PERSIST)
-	  private List<BiQueryObjects> queryObjects = new ArrayList<>(); 
+	@OneToMany(mappedBy = "app", cascade = CascadeType.PERSIST)
+	private List<BiQueryObjects> queryObjects = new ArrayList<>();
 
-	  @OneToMany(mappedBy="appId" ,cascade=CascadeType.PERSIST)
-	  private List<BiQueryGroups> queryGroups = new ArrayList<>(); 
-	  
-	
-	 public Long getAppId() {
+	@OneToMany(mappedBy = "appId", cascade = CascadeType.PERSIST)
+	private List<BiQueryGroups> queryGroups = new ArrayList<>();
+
+	public Long getAppId() {
 		return appId;
 	}
 
@@ -89,20 +90,16 @@ public class BiApp extends Model {
 		this.queryGroups = queryGroups;
 	}
 
-	public static Finder<Long,BiApp> find = new Finder<Long, BiApp>(Long.class, BiApp.class);
-	  
-	/*  public static Finder<Long, BiApp> find() {
-		    return new Finder<Long, BiApp>("default",Long.class, BiApp.class);
-		  }*/
-		  
-		  public static List<String> getNames() {
-		    List<String> appNames = new ArrayList<>();
-		    for (BiApp app : find.all()) {
-		      appNames.add(app.appName);
-		    }
-		    return appNames;
-		  }
-		  
-	  
-	
+	@SuppressWarnings("deprecation")
+	public static Finder<Long, BiApp> find = new Finder<Long, BiApp>(
+			Long.class, BiApp.class);
+
+	public static List<String> getNames() {
+		List<String> appNames = new ArrayList<>();
+		for (BiApp app : find.all()) {
+			appNames.add(app.appName);
+		}
+		return appNames;
+	}
+
 }

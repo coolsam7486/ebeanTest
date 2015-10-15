@@ -118,19 +118,4 @@ public class BiQueryObjects extends Model {
 		this.queryGroups = queryGroups;
 	}
 
-	/*
-	 * public Promise<Void> asyncSave() { // TODO Auto-generated method stub
-	 * 
-	 * 
-	 * return Promise.promise(new Function0<Void>() {
-	 * 
-	 * @Override public Void apply() throws Throwable {
-	 * 
-	 * 
-	 * save(); return null; } }, DBExecutionContext.ctx);
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
 }
